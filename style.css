@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(37, 37, 37);
+  min-height: 100vh;
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: hidden;
+}
+
+body article {
+  background-color: antiquewhite;
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+body article h2, body article p, body article li, body article time, body article span, body article strong {
+  overflow-wrap: anywhere;
+}
+
+body article p {
+  color: #2d2d2d;
+}
+
+body article.is-complete h2 {
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+
+body article.is-complete #todo-status {
+  color: #0a6a34;
+  font-weight: 700;
+}
+
+body article ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+body article ul li {
+  background-color: #ffffff;
+  border: 1px solid #bdb6a7;
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: #1f1f1f;
+}
+
+body article label {
+  color: #111;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  height: 34px;
+}
+
+body article label .complete-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+body article label input {
+  width: 18px;
+  height: 18px;
+  accent-color: #2196f3;
+  cursor: pointer;
+}
+
+body article label .slider {
+  display: none;
+}
+
+body article button {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #2d2d2d;
+  border-radius: 8px;
+  background-color: #fffef8;
+  color: #111;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+body article button:focus-visible {
+  outline: 3px solid #0a84ff;
+  outline-offset: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    padding: 28px;
+    align-items: center;
+  }
+
+  body article {
+    padding: 28px;
+  }
+
+  body article button {
+    width: auto;
+    min-width: 92px;
+  }
+}
