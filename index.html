@@ -8,12 +8,26 @@
 </head>
 <body>
     <article data-testid="test-todo-card" id="todo-card">
-        <h2 data-testid="test-todo-title">Design and Implementation of an Anonymous Counseling Platform</h2>
-        <p data-testid="test-todo-description">Develop a secure, anonymous platform that allows users to seek counseling support without revealing their identity. The project will focus on privacy, secure communication, and user safety.</p>
-        <strong data-testid="test-todo-priority" aria-label="Task priority: High">High</strong>
+        <h2 id="todo-title" data-testid="test-todo-title">Design and Implementation of an Anonymous Counseling Platform</h2>
+        <section id="todo-collapsible-section" class="collapsible-section" data-testid="test-todo-collapsible-section">
+            <p id="todo-description" data-testid="test-todo-description">Build an anonymous counseling platform focused on privacy, secure messaging, and user safety. <span id="dots">...</span><button type="button" id="myBtn" class="expand-toggle" data-testid="test-todo-expand-toggle" aria-controls="todo-collapsible-section" aria-expanded="false" onclick="myFunction()" tabindex="3">Read more</button><span id="more"> This web-based anonymous counseling platform should be aimed at providing accessible mental health support while preserving user privacy. it should allow individuals to engage in confidential conversations with counselors through a secure messaging system without disclosing personal identity.</span></p>
+        </section>
+        <div class="priority-row">
+            <span id="todo-priority-indicator" class="priority-indicator" data-testid="test-todo-priority-indicator" aria-hidden="true"></span>
+            <strong id="todo-priority" data-testid="test-todo-priority" aria-label="Task priority: High">High</strong>
+        </div>
         <time id="deadline" data-testid="test-todo-due-date" datetime="2026-04-11T12:00:00Z">April 11, 2026 by 12:00 PM UTC</time>
         <time id="time-remaining" data-testid="test-todo-time-remaining" aria-live="polite"></time>
-        <span data-testid="test-todo-status" id="todo-status" aria-label="Task status: In Progress">In Progress</span>
+        <span id="overdue-indicator" class="overdue-indicator" data-testid="test-todo-overdue-indicator" aria-live="polite"></span>
+        <div class="status-row">
+            <label for="status-control">Status:</label>
+            <select id="status-control" name="status-control" data-testid="test-todo-status-control" aria-label="Task status control" tabindex="2">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Done" id="done">Done</option>
+            </select>
+        </div>
+            
         <ul role="list" data-testid="test-todo-tags" aria-label="Task tags">
             <li data-testid="test-todo-tag-work">Work</li>
             <li data-testid="test-todo-tag-urgent">Urgent</li>
@@ -21,11 +35,36 @@
         </ul>
         <label aria-label="Mark task as complete">
            <span class="complete-label">Complete:</span>
-           <input type="checkbox" id="todo-complete-toggle" data-testid="test-todo-complete-toggle" aria-label="Mark task as complete">
+           <input type="checkbox" id="todo-complete-toggle" data-testid="test-todo-complete-toggle" aria-label="Mark task as complete" tabindex="1">
            <span class="slider round"></span>
         </label>
-          <button id="todo-edit-button" data-testid="test-todo-edit-button" aria-label="Edit task">Edit</button>
-          <button id="todo-delete-button" data-testid="test-todo-delete-button" aria-label="Delete task">Delete</button>
+          <button id="todo-edit-button" data-testid="test-todo-edit-button" aria-label="Edit task" tabindex="4">Edit</button>
+          <button id="todo-delete-button" data-testid="test-todo-delete-button" aria-label="Delete task" tabindex="5">Delete</button>
+    </article>
+     
+    <article id="edit-form" data-testid="test-todo-edit-form">
+        <form id="todo-edit-form">
+            <label for="edit-title">Title:</label>
+            <input type="text" id="edit-title" name="edit-title" data-testid="test-todo-edit-title-input">
+            
+            <label for="edit-description">Description:</label>
+            <textarea id="edit-description" name="edit-description" data-testid="test-todo-edit-description-input"></textarea>
+            
+            <label for="edit-priority">Priority:</label>
+            <select id="edit-priority" name="edit-priority" data-testid="test-todo-edit-priority-select">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            
+            <label for="edit-due-date">Due Date:</label>
+            <input type="datetime-local" id="edit-due-date" name="edit-due-date" data-testid="test-todo-edit-due-date-input">
+            
+            <div class="edit-actions">
+                <button type="submit" data-testid="test-todo-save-button" tabindex="6">Save Changes</button>
+                <button type="button" id="edit-cancel-button" data-testid="test-todo-cancel-button" tabindex="7">Cancel</button>
+            </div>
+        </form>
     </article>
         <script src="script.js"></script>
 </body>

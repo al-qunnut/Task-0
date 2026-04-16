@@ -23,7 +23,7 @@ body article {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   gap: 12px;
 }
@@ -36,9 +36,91 @@ body article p {
   color: #2d2d2d;
 }
 
+.collapsible-section {
+  overflow-wrap: anywhere;
+}
+
+#more {
+  display: none;
+}
+
+.overdue-indicator {
+  display: none;
+}
+
+.overdue-indicator.is-visible {
+  display: inline-block;
+}
+
+#time-remaining.is-overdue {
+  color: #b00020;
+  font-weight: 700;
+}
+
+.expand-toggle {
+  color: #0a5f9b;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  width: fit-content;
+  background: none;
+  border: none;
+  padding: 0;
+  align-self: flex-start;
+}
+
+.priority-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-row label {
+  height: auto;
+}
+
+.priority-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #d9534f;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.priority-indicator.priority-low {
+  background-color: green;
+}
+
+.priority-indicator.priority-medium {
+  background-color: yellow;
+}
+
+.priority-indicator.priority-high {
+  background-color: red;
+}
+
 body article.is-complete h2 {
   text-decoration: line-through;
   opacity: 0.75;
+}
+
+body article.is-complete {
+  opacity: 0.92;
+}
+
+body article.is-in-progress {
+  border-left: 6px solid #0a84ff;
+}
+
+body article.is-in-progress #time-remaining {
+  color: #0057a3;
+  font-weight: 700;
 }
 
 body article.is-complete #todo-status {
@@ -64,11 +146,9 @@ body article ul li {
 
 body article label {
   color: #111;
-  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  width: fit-content;
-  height: 34px;
+  gap: 5px;
+  height: 14px;
 }
 
 body article label .complete-label {
@@ -87,6 +167,11 @@ body article label .slider {
   display: none;
 }
 
+body article select {
+  padding: 5px 10px;
+  font-weight: 800;
+}
+
 body article button {
   width: 100%;
   padding: 10px 14px;
@@ -103,6 +188,74 @@ body article button:focus-visible {
   outline-offset: 2px;
 }
 
+body article button:active {
+  opacity: 60%;
+
+}
+
+#edit-form {
+  display: none;
+  border: 1px solid #d2c2a5;
+  background: linear-gradient(180deg, #fff6e8 0%, #f9efdc 100%);
+}
+
+#todo-edit-form {
+  display: grid;
+  gap: 10px;
+}
+
+#todo-edit-form label {
+  height: auto;
+  font-weight: 700;
+  color: #2e2418;
+}
+
+#todo-edit-form input,
+#todo-edit-form textarea,
+#todo-edit-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #bca98a;
+  border-radius: 8px;
+  background-color: #fffdf8;
+  color: #1f1b16;
+  font: inherit;
+}
+
+#todo-edit-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+#todo-edit-form input:focus,
+#todo-edit-form textarea:focus,
+#todo-edit-form select:focus {
+  outline: 2px solid #0a84ff;
+  outline-offset: 1px;
+  border-color: #0a84ff;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.edit-actions button {
+  flex: 1;
+}
+
+#todo-edit-form button[type="submit"] {
+  background-color: #204f2f;
+  color: #f7f7f7;
+  border-color: #163820;
+}
+
+#todo-edit-form button[type="button"] {
+  background-color: #fff8ea;
+  color: #2d2d2d;
+}
+
 @media screen and (min-width: 768px) {
   body {
     padding: 28px;
@@ -116,5 +269,6 @@ body article button:focus-visible {
   body article button {
     width: auto;
     min-width: 92px;
+  
   }
 }
